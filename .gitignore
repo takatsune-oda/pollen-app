@@ -1,0 +1,9 @@
+# venvの中にあるライブラリだけを除外
+venv/Lib/
+venv/Scripts/
+venv/pyvenv.cfg
+venv/Include/
+
+# キャッシュを除外
+__pycache__/
+*.pyc

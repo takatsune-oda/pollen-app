@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>花粉情報アプリ</title>
+</head>
+<body>
+<div>
+    <form method="get" action="/">
+        <label for="area">地域を選択して下さい</label>
+        <select id="area" name="area">
+            <option value="tokyo">東京</option>
+            <option value="osaka">大阪</option>
+            <option value="nagoya">名古屋</option>
+            <option value="hokkaido">北海道</option>
+        </select>
+        <button>送信</button>
+    </form>
+<a href="{{ url_for('areas_list') }}">対応地域</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>花粉情報アプリ</title>
+</head>
+<body>
+<div>
+    {% if pollen%}
+    <h1>花粉情報</h1>
+    <p>地域：{{ area }}</p>
+    <p>日付：{{ date }}</p>
+    <p>花粉量：{{ pollen }}</p>
+    {% else %}
+    <p>{{ message }}</p>
+    {% endif %}
+</div>
+<a href="{{ url_for('areas_list')}}">地域一覧</a>
+
+
+</body>
+</html>
