@@ -4,6 +4,10 @@ venv/Scripts/
 venv/pyvenv.cfg
 venv/Include/
 
+# データベースの除外
+venv/Apps/pollen.db
+
+
 # キャッシュを除外
 __pycache__/
 *.pyc
