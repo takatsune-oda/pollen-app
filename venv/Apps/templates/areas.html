@@ -6,10 +6,10 @@
 </head>
 <body>
     {% for key, data in areas %}
-    <a href="{{ url_for('pollen_info', area=key)}}">{{ data["area"] }}</a>
+    <a href="{{ url_for('main.pollen_info', area=key)}}">{{ data["area"] }}</a>
     {% endfor %}
 <p>
-<a href="{{ url_for('select_area')}}">トップへ戻る</a>
+<a href="{{ url_for('main.select_area')}}">トップへ戻る</a>
 </p>
 </body>
 </html>
