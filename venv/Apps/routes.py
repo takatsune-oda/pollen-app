@@ -4,11 +4,11 @@ from database import get_db_connection
 
 dp = Blueprint("main", __name__)
 
-@dp.route("/mock/pollen/<area>") # モックAPI
-def mock_pollen(area):
+@dp.route("/areas/<area_key>") # 花粉情報の取得
+def area_detail(area_key):
     con = get_db_connection()
     cur = con.cursor()
-    cur.execute("SELECT area_key, area_name, date, pollen FROM pollen WHERE area_key = ?", (area,))
+    cur.execute("SELECT area_key, area_name, date, pollen FROM pollen WHERE area_key = ?", (area_key,))
     pollen_area = cur.fetchone()
 
     if pollen_area:
@@ -22,7 +22,7 @@ def mock_pollen(area):
 def select_area():
     area = request.args.get("area")
     if area :
-        return redirect(url_for("main.mock_pollen", area=area))
+        return redirect(url_for("main.area_detail", area_key=area))
     else:
         return render_template("index.html")
 
