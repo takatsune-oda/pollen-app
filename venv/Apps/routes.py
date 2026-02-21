@@ -22,7 +22,7 @@ def save_pollen_record(record: dict) -> None:
         con.close()
 
 
-@dp.route("/areas/<area_key>")  # 花粉情報の取得
+@dp.route("/api/areas/<area_key>")  # 花粉情報の取得
 def area_detail(area_key):
     con = get_db_connection()
     try:

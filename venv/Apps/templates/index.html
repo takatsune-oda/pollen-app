@@ -1,22 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>花粉情報アプリ</title>
-</head>
-<body>
-<div>
-    <form method="get" action="/">
-        <label for="area">地域を選択して下さい</label>
-        <select id="area" name="area">
-            <option value="tokyo">東京</option>
-            <option value="osaka">大阪</option>
-            <option value="nagoya">名古屋</option>
-            <option value="hokkaido">北海道</option>
-        </select>
-        <button>送信</button>
-    </form>
-<a href="{{ url_for('main.areas_list') }}">対応地域</a>
-</div>
-</body>
-</html>
+<select id="area">
+    <option value="tokyo">東京</option>
+    <option value="osaka">大阪</option>
+    <option value="nagoya">名古屋</option>
+    <option value="hokkaido">北海道</option>
+</select>
+
+<button id="load-btn">表示</button>
+
+<div id="result"></div>
+
+<script>
+document.getElementById("load-btn")
+ .addEventListener("click", function() {
+
+    const area = document.getElementById("area").value;
+
+    fetch(`/api/areas/${area}`)
+     .then(response => response.json())
+     .then(data => {
+        const record = data[0];
+
+        const result = document.getElementById("result");
+
+        result.innerHTML =
+         "<h2>" + record.area_name + "</h2>" +
+         "<p>日付: " + record.date + "</p>" +
+         "<p>花粉量: " + record.pollen + "</p>";
+
+     });
+
+ });
+</script>
