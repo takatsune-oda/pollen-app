@@ -1,5 +1,4 @@
 from flask import Blueprint, jsonify, request, render_template, redirect, url_for
-import sqlite3
 from database import get_db_connection
 
 
@@ -8,7 +7,6 @@ dp = Blueprint("main", __name__)
 @dp.route("/mock/pollen/<area>") # モックAPI
 def mock_pollen(area):
     con = get_db_connection()
-    con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("SELECT area_key, area_name, date, pollen FROM pollen WHERE area_key = ?", (area,))
     pollen_area = cur.fetchone()
@@ -33,8 +31,7 @@ def select_area():
 def areas_list():
     areas = []
 
-    con = sqlite3.connect("pollen.db")
-    con.row_factory = sqlite3.Row
+    con = get_db_connection()
     cur = con.cursor()
     cur.execute("SELECT area_key, area_name, date, pollen FROM pollen")
     rows = cur.fetchall()
