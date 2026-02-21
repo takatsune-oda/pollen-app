@@ -81,7 +81,7 @@ def sync_area(area_key):
     except ValueError:
         return jsonify({"error": "unsupported area"}), 400
     except ExternalAPIError:
-        return jsonify({"error"j: "external api unavailable"}), 500
+        return jsonify({"error": "external api unavailable"}), 500
     
     save_pollen_record(latest_record)
     return jsonify({"message": "synced", "record": latest_record}), 201
